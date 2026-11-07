@@ -7,6 +7,7 @@
 | 文件 | 说明 |
 | --- | --- |
 | `dist/setup.exe` | Inno Setup 6 生成的标准安装向导（选择目录 → 释放文件 → 快捷方式 → 开始菜单 → 注册卸载项） |
+| `dist/PluginShell-1.0.0-setup.exe` | 同一份程序的推荐名副本：Inno Setup 会警告 `setup.exe` 这个文件名会被 Windows 兼容层 shim（存在 DLL 劫持面），对外分发建议用这个 |
 | `dist/PluginShell-1.0.0-portable.zip` | 免安装便携版，解压后用 `python run.py` 启动 |
 | `dist/setup-manifest.txt` | ISCC 生成的文件清单，便于核对打包内容 |
 
