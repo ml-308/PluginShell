@@ -17,8 +17,15 @@ AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
 DefaultDirName={localappdata}\{#AppName}
 DefaultGroupName={#AppName}
-DisableProgramGroupPage=yes
+; Keep the "Select Destination Location" page so the user can change the
+; install folder. Browse button and manual path editing stay enabled.
 DisableDirPage=no
+UsePreviousAppDir=yes
+AlwaysShowDirOnReadyPage=yes
+DirExistsWarning=auto
+; Shortcut creation is driven by explicit [Tasks] checkboxes below instead of
+; a separate Start Menu folder page, so both shortcut types are user-selectable.
+DisableProgramGroupPage=yes
 AllowNoIcons=yes
 InfoBeforeFile={#Src}\installer\staging\INFO.txt
 LicenseFile={#Src}\LICENSE
@@ -42,7 +49,8 @@ OutputManifestFile={#Out}\setup-manifest.txt
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional tasks:"; Flags: unchecked
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts (optional, both checked by default):"
+Name: "startmenuicon"; Description: "Create a Start Menu shortcut"; GroupDescription: "Shortcuts (optional, both checked by default):"
 
 [Files]
 Source: "{#Src}\run.py"; DestDir: "{app}"
@@ -62,8 +70,8 @@ Source: "{#Src}\installer\staging\Launch.cmd"; DestDir: "{app}"
 Source: "{#Src}\installer\staging\INSTALL-CN.txt"; DestDir: "{app}"
 
 [Icons]
-Name: "{autoprograms}\{#AppName}"; Filename: "{app}\Launch.cmd"; WorkingDir: "{app}"
+Name: "{autoprograms}\{#AppName}"; Filename: "{app}\Launch.cmd"; WorkingDir: "{app}"; Tasks: startmenuicon
 Name: "{autodesktop}\{#AppName}"; Filename: "{app}\Launch.cmd"; WorkingDir: "{app}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\Launch.cmd"; Description: "Launch PluginShell"; Flags: postinstall nowait skipifsilent
+Filename: "{app}\Launch.cmd"; Description: "Launch PluginShell after installation"; Flags: postinstall nowait skipifsilent unchecked

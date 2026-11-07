@@ -50,6 +50,18 @@ python run.py                        # 直接启动 → 空壳状态
 `%LOCALAPPDATA%\PluginShell`，`PrivilegesRequired=lowest` 不需要管理员权限。
 安装包**不预装任何插件**，安装后首次启动仍是「请安装插件」的空壳状态。
 
+向导里的可选项目：
+
+| 页面 | 选项 |
+| --- | --- |
+| 许可协议 | MIT License（必须接受） |
+| **选择目标位置** | **可修改安装目录**（手动输入 / Browse），"准备安装"页会复述所选路径 |
+| 选择附加任务 | ☑ 创建桌面快捷方式、☑ 创建「开始」菜单快捷方式（均可取消） |
+| 完成页 | ☐ 安装后启动 PluginShell |
+
+静默安装等价参数：`/DIR="D:\MyApps\PluginShell"` 改位置、`/TASKS="desktopicon,startmenuicon"`
+选任务、`/NOICONS` 不建快捷方式、`/VERYSILENT` 自动接受许可。详见 `installer/README.md`。
+
 ```bash
 winget install --id JRSoftware.InnoSetup --silent   # 仅首次构建需要
 python installer/build.py                          # 产出 dist/setup.exe + 便携版 zip

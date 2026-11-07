@@ -18,6 +18,34 @@
 | `dist/PluginShell-1.0.0-portable.zip` | 免安装便携版，解压后用 `python run.py` 启动 |
 | `dist/setup-manifest.txt` | ISCC 生成的文件清单，便于核对打包内容 |
 
+## 安装向导选项（GUI）
+
+| 向导页面 | 选项 | 说明 |
+| --- | --- | --- |
+| License Agreement | MIT 许可 | 必须接受才能继续；`/VERYSILENT` 会自动接受 |
+| Information | 说明页 | 依赖、空壳状态、快捷方式与卸载说明 |
+| **Select Destination Location** | **修改安装位置** | 默认 `%LOCALAPPDATA%\PluginShell`；可手动输入或点 Browse 选任意目录，"Ready to Install" 页会再次显示所选路径供核对 |
+| Select Additional Tasks | ☑ Create a desktop shortcut | 任务名 `desktopicon`，**默认勾选** |
+| Select Additional Tasks | ☑ Create a Start Menu shortcut | 任务名 `startmenuicon`，**默认勾选** |
+| Completing the Setup | ☐ Launch PluginShell after installation | 完成页复选框，默认不勾选；勾选后立即启动（首次会装 PySide6） |
+
+`PrivilegesRequired=lowest` 默认免管理员；若把目录改到 `C:\Program Files` 等受保护位置，
+请以管理员身份运行安装器（`PrivilegesRequiredOverridesAllowed=dialog` 会弹出安装范围选择）。
+
+### 静默 / 自动化安装的等效参数
+
+```bash
+setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART ^
+  /DIR="D:\MyApps\PluginShell" ^
+  /TASKS="desktopicon,startmenuicon"        :: 只创建这两类快捷方式
+setup.exe /VERYSILENT /NOICONS /DIR="D:\ps"  :: 完全不创建快捷方式
+```
+
+- `/DIR=` 覆盖安装位置；`/NOICONS` 跳过全部快捷方式；
+- `/TASKS=` 只选中列出的任务（未列出的都不选），`/MERGETASKS=` 在默认基础上追加；
+- `/VERYSILENT` 下完成页的启动复选框被跳过（`skipifsilent`），不会自动拉起应用；
+- `/LOG="path"` 写安装日志，`/SAVEINF=` / `/LOADINF=` 可保存/复用整套选择。
+
 ## 构建
 
 ```bash
@@ -53,7 +81,7 @@ installer/
   `pip install -r requirements.txt`（一次联网）。内核、CLI、测试无此依赖。
 - 提供标准 Windows 卸载项（设置 → 应用 → 已安装的应用 → PluginShell），
   也可用 `unins000.exe /VERYSILENT` 静默卸载。
-- 桌面快捷方式默认不勾选；开始菜单快捷方式始终创建，可用 `/NOICONS` 关闭。
+- 桌面与开始菜单快捷方式都是**安装时可勾选的选项**（默认都勾选），可用 `/NOICONS` 或 `/TASKS=` 控制；安装位置可在向导里随意修改。
 
 ## 验证（静默安装到临时目录）
 

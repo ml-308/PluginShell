@@ -17,9 +17,21 @@ LICENSE: MIT (Copyright (c) 2026 ml-308). The setup wizard shows the full
 MIT License Agreement page; the LICENSE file is also copied to the install
 folder and to the portable ZIP. Third-party plugins keep their own licenses.
 
+WIZARD OPTIONS
+--------------
+  * "Select Destination Location" - change the install folder (default is
+    %LOCALAPPDATA%\PluginShell); the chosen path is shown again on the
+    Ready to Install page.
+  * "Select Additional Tasks" - two checkboxes, both checked by default:
+      - Create a desktop shortcut      (task: desktopicon)
+      - Create a Start Menu shortcut  (task: startmenuicon)
+  * Final page - optional "Launch PluginShell after installation" checkbox.
+  * Unattended equivalents: /DIR="..." , /TASKS="desktopicon,startmenuicon",
+    /NOICONS (no shortcuts), /VERYSILENT .
+
 AFTER INSTALLATION
 ------------------
-  * Start Menu / optional Desktop shortcut: "PluginShell"
+  * Start Menu / Desktop shortcut: "PluginShell" (per your selections above)
   * Install sample plugins from <install dir>\sample_plugins via the in-app
     plugin manager, or run:
         python tools\plugin_cli.py install sample_plugins\com.example.content_a

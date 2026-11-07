@@ -14,6 +14,18 @@ PluginShell 1.0.0 安装说明
        python -m pip install -r requirements.txt
    微内核、命令行工具与自动化测试不需要 PySide6，可离线使用。
 
+【安装向导选项】
+1. 许可协议页：MIT License，需接受后继续。
+2. 选择目标位置：默认是 %LOCALAPPDATA%\PluginShell，可手动输入或用 Browse 改成任意目录；
+   「准备安装」页会再次列出你选的路径供核对。
+3. 选择附加任务（默认两项都勾选，可取消）：
+   - 创建桌面快捷方式
+   - 创建「开始」菜单快捷方式
+4. 完成页：可选「安装后启动 PluginShell」，默认不勾选。
+静默安装等价参数：/DIR="D:\MyApps\PluginShell"、/TASKS="desktopicon,startmenuicon"、
+/NOICONS（完全不建快捷方式）、/VERYSILENT（自动接受许可且不自动启动）。
+若把目录改到 C:\Program Files 等受保护位置，请以管理员身份运行安装器。
+
 【首次启动】
 未安装任何插件时，窗口只显示「请安装插件」和插件管理入口 —— 这是预期的空壳状态。
 点「插件管理… → 安装文件夹…」，选择安装目录下的 sample_plugins 里任一子目录即可看到内容。
