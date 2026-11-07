@@ -35,3 +35,8 @@ PluginShell 1.0.0 安装说明
 【文档】
 README.md 含完整插件协议、架构图、新增插件步骤、安装/卸载与验收清单。
 tests/acceptance.md 为真实界面的手动验收清单。
+
+【开源许可】
+本项目采用 MIT License（Copyright (c) 2026 ml-308），完整条款见 LICENSE 文件。
+安装向导会显示许可协议页，安装目录与便携版 ZIP 内也包含 LICENSE。
+第三方插件为独立作品，许可由插件作者自行声明。

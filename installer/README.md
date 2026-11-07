@@ -2,6 +2,13 @@
 
 本目录负责产出 **原生 Windows 安装程序**，全部使用本地工具，不依赖 Web 技术。
 
+## 开源许可
+
+项目采用 **MIT License**（根目录 `LICENSE`）。`setup.iss.template` 中的
+`LicenseFile` 让安装向导显示 **License Agreement** 页面，`[Files]` 同时把
+`LICENSE` 释放到安装目录；便携版 ZIP 也会自动包含它。
+`/VERYSILENT` 静默安装会自动接受许可页，无需额外开关。
+
 ## 产物
 
 | 文件 | 说明 |

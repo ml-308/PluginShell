@@ -21,6 +21,7 @@ DisableProgramGroupPage=yes
 DisableDirPage=no
 AllowNoIcons=yes
 InfoBeforeFile={#Src}\installer\staging\INFO.txt
+LicenseFile={#Src}\LICENSE
 OutputDir={#Out}
 OutputBaseFilename=setup
 Compression=lzma2/max
@@ -46,6 +47,7 @@ Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription:
 [Files]
 Source: "{#Src}\run.py"; DestDir: "{app}"
 Source: "{#Src}\README.md"; DestDir: "{app}"
+Source: "{#Src}\LICENSE"; DestDir: "{app}"
 Source: "{#Src}\requirements.txt"; DestDir: "{app}"
 Source: "{#Src}\.gitignore"; DestDir: "{app}"
 Source: "{#Src}\core\*"; DestDir: "{app}\core"; Flags: recursesubdirs createallsubdirs

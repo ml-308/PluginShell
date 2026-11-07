@@ -13,6 +13,10 @@ REQUIREMENTS
 
 No Web technology is used anywhere: the UI is built from native Qt widgets.
 
+LICENSE: MIT (Copyright (c) 2026 ml-308). The setup wizard shows the full
+MIT License Agreement page; the LICENSE file is also copied to the install
+folder and to the portable ZIP. Third-party plugins keep their own licenses.
+
 AFTER INSTALLATION
 ------------------
   * Start Menu / optional Desktop shortcut: "PluginShell"
