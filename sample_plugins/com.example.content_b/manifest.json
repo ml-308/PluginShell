@@ -1,0 +1,32 @@
+{
+  "id": "com.example.content_b",
+  "name": "示例插件 B · 工具",
+  "version": "1.0.0",
+  "api": "1.0",
+  "entry": "plugin.py",
+  "class": "ContentBPlugin",
+  "description": "依赖插件 A；通过服务容器读取 A 的状态，并通过事件总线与 A 双向协作。",
+  "category": {
+    "id": "tool",
+    "label": "工具",
+    "order": 20,
+    "icon": ""
+  },
+  "dependencies": {
+    "com.example.content_a": ">=1.0.0"
+  },
+  "requires_services": ["com.example.content_a.api"],
+  "provides_services": [],
+  "subscribes": ["knowledge.updated"],
+  "publishes": ["knowledge.refresh_request", "tool.sync_ack"],
+  "provides_extension_points": [],
+  "contributes": {
+    "main.content": [
+      {
+        "id": "com.example.content_b.panel",
+        "title": "工具 · 知识点速记",
+        "category": "tool"
+      }
+    ]
+  }
+}

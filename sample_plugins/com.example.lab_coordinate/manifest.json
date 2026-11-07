@@ -1,0 +1,30 @@
+{
+  "id": "com.example.lab_coordinate",
+  "name": "示例插件 C · 平面直角坐标系实验室",
+  "version": "1.0.0",
+  "api": "1.0",
+  "entry": "plugin.py",
+  "class": "LabCoordinatePlugin",
+  "description": "用原生 QPainter 绘制平面直角坐标系；演示实验室类插件以及自定义扩展点的注册与回滚。",
+  "category": {
+    "id": "lab",
+    "label": "实验室",
+    "order": 30,
+    "icon": ""
+  },
+  "dependencies": {},
+  "requires_services": [],
+  "provides_services": [],
+  "subscribes": [],
+  "publishes": [],
+  "provides_extension_points": ["lab.canvas.tools"],
+  "contributes": {
+    "main.content": [
+      {
+        "id": "com.example.lab_coordinate.panel",
+        "title": "实验室 · 平面直角坐标系",
+        "category": "lab"
+      }
+    ]
+  }
+}

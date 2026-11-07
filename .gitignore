@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+state/enabled.json
+plugins/*/
+!plugins/README.md
+.venv/
+build/
+*.egg-info/
+
+# 安装器：交付用的 setup.exe / 便携 ZIP 需要入库；忽略临时与中间产物
+installer/_build/
+dist/_smoke*/
+dist/_t*/
+dist/*.log
+dist/*.txt
+dist/PSI-Installer.exe

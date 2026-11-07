@@ -1,0 +1,30 @@
+{
+  "id": "com.example.content_a",
+  "name": "示例插件 A · 知识点讲解",
+  "version": "1.0.0",
+  "api": "1.0",
+  "entry": "plugin.py",
+  "class": "ContentAPlugin",
+  "description": "通过 main.content 贡献真实内容；注册一个服务并发布事件，供依赖它的插件协作。",
+  "category": {
+    "id": "lesson",
+    "label": "知识点讲解",
+    "order": 10,
+    "icon": ""
+  },
+  "dependencies": {},
+  "requires_services": [],
+  "provides_services": ["com.example.content_a.api"],
+  "subscribes": ["knowledge.refresh_request"],
+  "publishes": ["knowledge.updated"],
+  "provides_extension_points": [],
+  "contributes": {
+    "main.content": [
+      {
+        "id": "com.example.content_a.panel",
+        "title": "知识点讲解 · 二次函数",
+        "category": "lesson"
+      }
+    ]
+  }
+}

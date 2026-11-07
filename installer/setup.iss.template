@@ -1,0 +1,67 @@
+; PluginShell native installer (Inno Setup 6).
+; This is a TEMPLATE: installer/build.py substitutes @@SRC@@ / @@OUT@@
+; with absolute paths before invoking ISCC.exe.
+; All strings here are ASCII so the script compiles on any system codepage;
+; bundled project documents may contain UTF-8 Chinese text as plain data files.
+
+#define AppName "PluginShell"
+#define AppVersion "1.0.0"
+#define AppPublisher "PluginShell"
+#define Src "@@SRC@@"
+#define Out "@@OUT@@"
+
+[Setup]
+AppId={{8F3C1D7A-52B4-4E6F-9A10-6D2B7C4E9F31}
+AppName={#AppName}
+AppVersion={#AppVersion}
+AppPublisher={#AppPublisher}
+DefaultDirName={localappdata}\{#AppName}
+DefaultGroupName={#AppName}
+DisableProgramGroupPage=yes
+DisableDirPage=no
+AllowNoIcons=yes
+InfoBeforeFile={#Src}\installer\staging\INFO.txt
+OutputDir={#Out}
+OutputBaseFilename=setup
+Compression=lzma2/max
+SolidCompression=yes
+WizardStyle=modern
+PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
+UninstallDisplayName={#AppName} {#AppVersion}
+CloseApplications=no
+RestartIfNeededByRun=no
+VersionInfoVersion=1.0.0.0
+VersionInfoCompany={#AppPublisher}
+VersionInfoProductName={#AppName}
+VersionInfoDescription=Native plugin microkernel shell installer
+OutputManifestFile={#Out}\setup-manifest.txt
+
+[Languages]
+Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Tasks]
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional tasks:"; Flags: unchecked
+
+[Files]
+Source: "{#Src}\run.py"; DestDir: "{app}"
+Source: "{#Src}\README.md"; DestDir: "{app}"
+Source: "{#Src}\requirements.txt"; DestDir: "{app}"
+Source: "{#Src}\.gitignore"; DestDir: "{app}"
+Source: "{#Src}\core\*"; DestDir: "{app}\core"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\sdk\*"; DestDir: "{app}\sdk"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\ui\*"; DestDir: "{app}\ui"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\sample_plugins\*"; DestDir: "{app}\sample_plugins"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\tests\*"; DestDir: "{app}\tests"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\tools\*"; DestDir: "{app}\tools"; Flags: recursesubdirs createallsubdirs
+Source: "{#Src}\plugins\README.md"; DestDir: "{app}\plugins"
+Source: "{#Src}\state\.gitkeep"; DestDir: "{app}\state"
+Source: "{#Src}\installer\staging\Launch.cmd"; DestDir: "{app}"
+Source: "{#Src}\installer\staging\INSTALL-CN.txt"; DestDir: "{app}"
+
+[Icons]
+Name: "{autoprograms}\{#AppName}"; Filename: "{app}\Launch.cmd"; WorkingDir: "{app}"
+Name: "{autodesktop}\{#AppName}"; Filename: "{app}\Launch.cmd"; WorkingDir: "{app}"; Tasks: desktopicon
+
+[Run]
+Filename: "{app}\Launch.cmd"; Description: "Launch PluginShell"; Flags: postinstall nowait skipifsilent

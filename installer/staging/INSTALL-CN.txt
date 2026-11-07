@@ -1,0 +1,37 @@
+PluginShell 1.0.0 安装说明
+============================
+
+【这个安装包做了什么】
+把 PluginShell 项目文件复制到本机目录（默认 %LOCALAPPDATA%\PluginShell），
+创建开始菜单/可选桌面快捷方式，并注册标准的 Windows 卸载项。
+安装包本身不包含 Python 运行时和 PySide6，也不包含任何业务内容。
+
+【运行环境】
+1. Windows 10/11
+2. Python 3.10+，且已加入 PATH
+3. PySide6：首次通过快捷方式启动时自动执行 pip install -r requirements.txt
+   （只需一次联网）。若离线，可先手工执行：
+       python -m pip install -r requirements.txt
+   微内核、命令行工具与自动化测试不需要 PySide6，可离线使用。
+
+【首次启动】
+未安装任何插件时，窗口只显示「请安装插件」和插件管理入口 —— 这是预期的空壳状态。
+点「插件管理… → 安装文件夹…」，选择安装目录下的 sample_plugins 里任一子目录即可看到内容。
+
+【插件分类】
+知识点讲解(lesson) / 工具(tool) / 实验室(lab) 三类由示例插件在 manifest.json 中自报，
+内核与界面不含任何具体分类名。新增分类只需在新插件清单里写 category，无需改核心代码。
+
+【常用命令】
+    python run.py                                  启动原生窗口
+    python tools\plugin_cli.py list                  查看插件与内核状态
+    python tools\plugin_cli.py install <插件目录>    安装插件
+    python tools\verify.py                          12 项自动化验收
+
+【卸载】
+设置 → 应用 → 已安装的应用 → PluginShell → 卸载。
+卸载程序只删除本安装目录与快捷方式，不会动其它文件。
+
+【文档】
+README.md 含完整插件协议、架构图、新增插件步骤、安装/卸载与验收清单。
+tests/acceptance.md 为真实界面的手动验收清单。

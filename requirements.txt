@@ -1,0 +1,4 @@
+# 仅壳子 UI 层与需要绘制界面的插件需要；微内核与自动化测试为零依赖纯 Python。
+# 只装 Essentials（QtCore/QtGui/QtWidgets），刻意不引入 QtWebEngine —— 本项目全程不使用 Web 技术，
+# 同时避免下载上百 MB 的浏览器组件。插件中 `from PySide6.QtWidgets import ...` 照常可用。
+PySide6-Essentials>=6.8

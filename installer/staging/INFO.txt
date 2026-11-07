@@ -1,0 +1,29 @@
+PluginShell 1.0.0 - Native Plugin Microkernel Shell
+=====================================================
+
+This installer copies the PluginShell project into your local app-data folder.
+It contains NO business content: the shell starts empty and shows
+"Please install a plugin" plus a plugin manager entry until you install plugins.
+
+REQUIREMENTS
+------------
+  * Windows 10 / 11
+  * Python 3.10 or newer, available on PATH
+  * PySide6 - installed automatically on first launch (one-time internet access)
+
+No Web technology is used anywhere: the UI is built from native Qt widgets.
+
+AFTER INSTALLATION
+------------------
+  * Start Menu / optional Desktop shortcut: "PluginShell"
+  * Install sample plugins from <install dir>\sample_plugins via the in-app
+    plugin manager, or run:
+        python tools\plugin_cli.py install sample_plugins\com.example.content_a
+  * Verify the kernel without a GUI:   python tools\verify.py
+  * Full documentation: README.md in the install folder
+
+The installer registers a standard Windows uninstall entry:
+    Settings > Apps > Installed apps > PluginShell
+
+Plugin categories (lesson / tool / lab) are declared by plugins themselves;
+the kernel contains no hard-coded business features.
