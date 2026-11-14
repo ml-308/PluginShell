@@ -13,6 +13,14 @@ ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+# 「发现新版本」检查：命令行开关 + 无人值守 probe（不依赖 Qt，可在无 GUI 环境跑）
+import update_check  # noqa: E402
+
+update_check.configure(sys.argv)
+_probe_exit = update_check.try_probe(sys.argv)
+if _probe_exit is not None:
+    sys.exit(_probe_exit)
+
 try:
     from PySide6.QtWidgets import QApplication
 except ImportError:
@@ -35,6 +43,7 @@ def main() -> int:
     app = QApplication(sys.argv)
     window = MainWindow(kernel)
     window.show()
+    update_check.schedule_auto_check(window)
     return_code = app.exec()
     kernel.shutdown()
     return return_code

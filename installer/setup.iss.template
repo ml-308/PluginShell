@@ -5,7 +5,7 @@
 ; bundled project documents may contain UTF-8 Chinese text as plain data files.
 
 #define AppName "PluginShell"
-#define AppVersion "1.0.0"
+#define AppVersion "1.1.0"
 #define AppPublisher "PluginShell"
 #define Src "@@SRC@@"
 #define Out "@@OUT@@"
@@ -39,7 +39,7 @@ PrivilegesRequiredOverridesAllowed=dialog
 UninstallDisplayName={#AppName} {#AppVersion}
 CloseApplications=no
 RestartIfNeededByRun=no
-VersionInfoVersion=1.0.0.0
+VersionInfoVersion=1.1.0.0
 VersionInfoCompany={#AppPublisher}
 VersionInfoProductName={#AppName}
 VersionInfoDescription=Native plugin microkernel shell installer

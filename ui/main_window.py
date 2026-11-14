@@ -23,6 +23,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+import update_check
+
 from .plugin_manager import PluginManagerDialog
 
 ALL_CATEGORIES = "__all__"
@@ -63,6 +65,9 @@ class MainWindow(QMainWindow):
         refresh_action.triggered.connect(self._render)
         toolbar.addAction(manage_action)
         toolbar.addAction(refresh_action)
+        update_action = QAction("检查更新…", self)
+        update_action.triggered.connect(lambda: update_check.check_now(self))
+        toolbar.addAction(update_action)
         self.statusBar().showMessage("就绪")
 
         self._kernel_token = kernel.on_changed(self._schedule_render)

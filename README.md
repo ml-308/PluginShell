@@ -2,7 +2,7 @@
 
 > **公开仓库**：https://github.com/ml-308/PluginShell
 > **下载安装包**：https://github.com/ml-308/PluginShell/releases/tag/v1.0.0
-> （`setup.exe` 原生安装向导 / `PluginShell-1.0.0-setup.exe` 推荐名副本 / 便携版 ZIP）
+> （`setup.exe` 原生安装向导 / `PluginShell-1.1.0-setup.exe` 推荐名副本 / 便携版 ZIP）
 > **开源许可**：[MIT](LICENSE) · Copyright (c) 2026 ml-308
 
 一个面向**高中各科知识点展示**的桌面 App 壳子：壳子本身只有空状态与插件管理能力，

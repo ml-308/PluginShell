@@ -18,10 +18,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 BUILD = ROOT / "installer" / "_build"
-ZIP_NAME = "PluginShell-1.0.0-portable.zip"
+ZIP_NAME = "PluginShell-1.1.0-portable.zip"
 # Inno Setup 警告：名为 setup.exe 的程序会被 Windows 应用兼容性 shim 处理，
 # 有 DLL 劫持面。保留用户要求的名字，同时提供推荐名的同一份副本。
-ALIAS_NAME = "PluginShell-1.0.0-setup.exe"
+ALIAS_NAME = "PluginShell-1.1.0-setup.exe"
 
 EXCLUDE_DIRS = {".git", "dist", "installer", "__pycache__", ".venv", "release"}
 EXCLUDE_FILES = {"enabled.json", "setup-manifest.txt", "*.pyc"}
